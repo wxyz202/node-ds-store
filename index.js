@@ -28,6 +28,10 @@ Helper.prototype.setIconPos = function (name, x, y) {
   this.file.push(Entry.construct(name, 'Iloc', { x: x, y: y }))
 }
 
+Helper.prototype.setFontSize = function (size) {
+  this.opts.fontSize = size
+}
+
 Helper.prototype.setWindowPos = function (x, y) {
   this.opts.window.x = x
   this.opts.window.y = y
@@ -55,7 +59,7 @@ Helper.prototype.write = function (path, cb) {
   }
 
   this.file.push(Entry.construct('.', 'bwsp', this.opts.window))
-  this.file.push(Entry.construct('.', 'icvp', { iconSize: this.opts.iconSize, rawAlias: rawAlias, colorComponents: colorComponents }))
+  this.file.push(Entry.construct('.', 'icvp', { iconSize: this.opts.iconSize, fontSize: this.opts.fontSize, rawAlias: rawAlias, colorComponents: colorComponents}))
 
   this.file.write(path, cb)
 }
